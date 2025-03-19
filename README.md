@@ -1,116 +1,86 @@
-# ProtonX Transformer
+# THÔNG THIÊN PHIÊN GIẢ
 
+Bảo pháp "Thông Thiên Phiên Giả" là một đại pháp khí tối thượng, dựa trên huyền thuật **Transformer**, lĩnh hội từ cổ thư **[Attention Is All You Need](https://arxiv.org/pdf/1706.03762.pdf)**. Nếu đạo hữu thấy pháp bảo này hữu dụng, xin hãy lưu lại một dấu ấn (Star) để thể hiện lòng tán thưởng!
 
-<p align="center">
-    <img src='https://storage.googleapis.com/protonx-cloud-storage/transformer/protonx-transf.png' width=200 class="center">
-</p>
+## I. Giải Nghĩa Đại Pháp
+- **Bí kíp truyền thừa**:
+    - Bí mật của **Biến Hóa Ngữ Giới**: [Tại đây](https://drive.google.com/file/d/182rTpgUdTjDgw4LrAM6ah2B_Iw_4rXQW/view?usp=sharing)
+    - **Thiên Đạo Phiên Dịch** (Đang cập nhật)
 
-Design Machine Translation Engine for Vietnamese using Transformer Architecture from paper [Attention Is All You Need](https://arxiv.org/pdf/1706.03762.pdf). Give us a star if you like this repo.
+## II. Tác Giả
+- **GitHub**: bangoc123
+- **Linh Truyền**: protonxai@gmail.com
 
-Model Explanation:
-- Slide: 
-    - Transformer Encoder: Check out [here](https://drive.google.com/file/d/182rTpgUdTjDgw4LrAM6ah2B_Iw_4rXQW/view?usp=sharing)
-    - Transformer Decoder (Updating)
+Bảo pháp này thuộc về đại môn phái **[Papers-Videos-Code](https://docs.google.com/document/d/1bjmwsYFafizRXlZyJFazd5Jcr3tqpWSiHLvfllWRQBc/edit?usp=sharing)**, nơi tập hợp những kỳ thư thuật pháp của **Trí Tuệ Nhân Tạo**, truyền bá qua kênh **[ProtonX Youtube](https://www.youtube.com/c/ProtonX/videos)**.
 
-Author:
-- Github: bangoc123
-- Email: protonxai@gmail.com
+---
 
-This library belongs to our project: [Papers-Videos-Code](https://docs.google.com/document/d/1bjmwsYFafizRXlZyJFazd5Jcr3tqpWSiHLvfllWRQBc/edit?usp=sharing) where we will implement AI SOTA papers and publish all source code. Additionally, videos to explain these models will be uploaded to [ProtonX Youtube](https://www.youtube.com/c/ProtonX/videos) channels.
-
-
-Architecture:
+## III. Kiến Trúc Đại Trận
 
 ![image](https://storage.googleapis.com/protonx-cloud-storage/transformer/architecture.PNG)
 
+**[Chú ý] Đạo hữu có thể sử dụng dữ liệu riêng để bồi dưỡng đại pháp này.**
 
-**[Note] You can use your data to train this model.**
+---
 
-### I. Set up environment
+## IV. Cách Thiết Lập Pháp Trường
 
-1. Make sure you have installed Miniconda. If not yet, see the setup document [here](https://conda.io/en/latest/user-guide/install/index.html#regular-installation).
+1. Đạo hữu cần phải có **Miniconda**. Nếu chưa có, hãy xem bí kíp hướng dẫn [tại đây](https://conda.io/en/latest/user-guide/install/index.html#regular-installation).
+2. Đi đến **pháp đàn** `transformer` và thi triển thần chú:
+   ```bash
+   conda env create -f environment.yml
+   ```
+3. Khởi động đại pháp:
+   ```bash
+   conda activate transformer
+   ```
 
-2. `cd` into `transformer` and use command line `conda env create -f environment.yml` to set up the environment
+---
 
-3. Run conda environment using the command `conda activate transformer`
+## V. Chuẩn Bị Nguyên Liệu
 
-### II. Set up your dataset.
+Để luyện thành bảo pháp, cần có **ngữ liệu** bao gồm hai cuốn **chân kinh**:
+- **train.en** (Anh ngữ)
+- **train.vi** (Việt ngữ)
 
+Ví dụ minh họa:
+| train.en   | train.vi      |
+|------------|--------------|
+| I love you | Tôi yêu bạn  |
+| ...        | ....         |
 
-Design train dataset with 2 files:
-- train.en
-- train.vi
+Có thể tham khảo **ngữ liệu giả lập** trong thư mục `./data/mock`.
 
-For example: 
+---
 
-| train.en   |   train.vi      |
-|----------|:-------------:|
-| I love you       |  Tôi yêu bạn|
-| ...              |    .... |
+## VI. Bắt Đầu Tu Luyện
 
-You can see mocking data in `./data/mock` folder.
-
-### III. Train your model by running this command line
-
-Training script:
-
+Thi triển thần chú để khai mở đại trận:
 ```bash
 python train.py --epochs ${epochs} --input-lang en --target-lang vi --input-path ${path_to_en_text_file} --target-path ${path_to_vi_text_file}
 ```
 
-Example: You want to build English-Vietnamese machine translation in 10 epochs
-
-
+Ví dụ: Đạo hữu muốn luyện **Anh-Việt đại pháp** trong **10 chu thiên**:
 ```bash
 python train.py --epochs 10 --input-lang en --target-lang vi --input-path ./data/mock/train.en --target-path ./data/mock/train.vi
 ```
 
-There are some `important` arguments for the script you should consider when running it:
+Những tham số quan trọng cần lưu tâm:
+- `input-lang`: Ngôn ngữ nhập vào (VD: en)
+- `target-lang`: Ngôn ngữ đích (VD: vi)
+- `input-path`: Đường dẫn đến bản kinh nhập vào
+- `target-path`: Đường dẫn đến bản kinh mục tiêu
+- `model-folder`: Nơi lưu giữ kết quả đại pháp
+- `batch-size`: Quy mô mỗi lô luyện công
+- `max-length`: Giới hạn độ dài của pháp văn
+- `num-examples`: Số lượng câu cần luyện
+- `d-model`: Kích thước không gian pháp thuật
+- `n`: Số tầng trong Kiến Trúc Đại Pháp
+- `h`: Số đầu của "Đa Thần Tỉnh" (Multi-Head Attention)
+- `dropout-rate`: Tỷ lệ thất thoát linh khí
 
-- `input-lang`: The name of the input language (E.g. en)
-- `target-lang`: The name of the target language (E.g. vi)
-- `input-path`: The path of the input text file (E.g. ./data/mock/train.en)
-- `target-path`: The path of the output text file (E.g. ./data/mock/train.vi)
-- `model-folder`: Saved model path
-- `vocab-folder`: Saved tokenizer + vocab path
-- `batch-size`: The batch size of the dataset
-- `max-length`: The maximum length of a sentence you want to keep when preprocessing
-- `num-examples`: The number of lines you want to train. It was set small if you want to experiment with this library quickly.
-- `d-model`: The dimension of linear projection for all sentence.  It was mentioned in Section `3.2.2 ` on the [page 5](https://arxiv.org/pdf/1706.03762.pdf)
-- `n`: The number of Encoder/Decoder Layers. Transformer-Base sets it to 6.
-- `h`: The number of Multi-Head Attention. Transformer-Base sets it to 6.
-- `d-ff`: The hidden size of Position-wise Feed-Forward Networks.  It was mentioned in Section `3.3`
-- `activation`: The activation of Position-wise Feed-Forward Networks. If we want to experiment `GELU` instead of `RELU`, which activation was wisely used recently.
-- `dropout-rate`. Dropout rate of any Layer. Transformer-Base sets it to 0.1
-- `eps`. Layer Norm parameter. Default value: 0.1
+Sau khi hoàn thành luyện pháp, **trận pháp** sẽ được lưu tại thư mục đã chỉ định.
 
-After training successfully, your model will be saved to `model-folder` defined before
+---
 
-### IV. TODO
 
-- ~~Bugs Fix~~:
-
-    In this project, you can see that we try to compile all the pipeline into `tf.keras.Model` class in `model.py` file and using `fit function `to train the model. Unfortunately, there are few critical bugs we need to fix for a new release.
-
-    - Fix exporting model using save_weights API. (Currently, the system is unable to reload checkpoint for some unknown reasons.) 
-
-- New Features:
-
-    - ~~Reading files Pipeline (Release Time: 06/07/2021)~~
-    - Adapting BPE, Subwords Tokenizer (Release Time: Updating...)
-    - Use Beam Search for better-generating words (Release Time: Updating...)
-    - Set up Typing weights mode (Release Time: Updating...)
-
-### V. Running Test
-
-When you want to modify the model, you need to run the test to make sure your change does not affect the whole system.
-
-In the `./transformer` folder please run:
-
-```bash
-pytest
-```
-
-### VI. Feedback
-
-If you have any issues when using this library, please let us know via the issues submission tab.
