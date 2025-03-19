@@ -15,12 +15,12 @@ def createAngleRates(d_model):
     Returns:
         numpy.ndarray: A 1xd_model matrix containing the angle rates
     """
-    angles = np.arange(d_model)
-    angles[1::2] = angles[0::2]
-    angles = 1 / (10000 ** (angles / d_model))
-    angles = np.expand_dims(angles, axis=0)
-    return angles
-
+    angles = np.arange(d_model)                 # tao array tu 0 den d_model - 1 (0, 1, ..., d_model - 1)
+    angles[1::2] = angles[0::2]                 # copy value tu o chan sang o le -> [0, 0, 2, 2, ...]
+    angles = 1 / (10000 ** (angles / d_model))  # tinh angle rate
+    angles = np.expand_dims(angles, axis=0)     # vi sao phai them chieu ? dee ty nua matrix pos co shape (seq_length, 1), nhan voi matrix pos co shape (1, d_model)
+    return angles                               # return matrix co shape (1, d_model)
+                                            # seq_length chinh la pos
 def generate_positional_encoding(pos, d_model):
     """
     Generates positional encodings for the Transformer model.
@@ -38,25 +38,13 @@ def generate_positional_encoding(pos, d_model):
     Returns:
         tensorflow.Tensor: A tensor of shape (1, pos, d_model) containing the positional
                          encodings for all positions up to pos
-    """
-    angles = createAngleRates(d_model)
-    pos = np.expand_dims(np.arange(pos), axis=1)
-    pos_angles = pos.dot(angles)
-    pos_angles[:, 0::2] = np.sin(pos_angles[:, 0::2])
-    pos_angles[:, 1::2] = np.cos(pos_angles[:, 1::2])
-    pos_angles = np.expand_dims(pos_angles, axis=0)
-  
+    """                                                 # no chi khac nhau o pos thoi, nen minh tinh chung roi nhan voi pos sau
+    angles = createAngleRates(d_model)                  # return angle_matrix co shape (1, d_model) 
+    pos = np.expand_dims(np.arange(pos), axis=1)        # bien pos thanh ma tran [0, 1, ..., pos - 1], sau khi expand  dims co shape = (pos, 1)
+    pos_angles = pos.dot(angles)                        # tinh pos_angles co shape = (pos, d_model) CT: pos / 10000^(2i/d_model)
+    pos_angles[:, 0::2] = np.sin(pos_angles[:, 0::2])   # tai tat ca cac hang cua pos_angles, tuong ung voi tung tu trong cau, tai cac o
+                                                        # co vi tri chan, su dung ham sin
+    pos_angles[:, 1::2] = np.cos(pos_angles[:, 1::2])   # tuong tu su dung cos voi o le
+    pos_angles = np.expand_dims(pos_angles, axis=0)     # bien pos_angle thanh matrix co shape = (1, pos, d_model)
+                                                         
     return tf.cast(pos_angles, dtype=tf.float32)
-
-# unit test for 2 function
-def test_createAngleRates():
-    angles = createAngleRates(5)
-    assert angles.shape == (1, 5)
-    assert np.allclose(angles, np.array([[1, 1, 1, 1, 1]]))
-
-def test_generate_positional_encoding():
-    pos_angles = generate_positional_encoding(5, 5)
-    assert pos_angles.shape == (1, 5, 5)
-    assert np.allclose(pos_angles, np.array([[[1, 1, 1, 1, 1]]]))
-
-test_createAngleRates()

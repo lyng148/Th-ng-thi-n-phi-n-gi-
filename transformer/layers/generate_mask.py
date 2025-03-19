@@ -56,5 +56,4 @@ def generate_mask(inp, targ):
 
     return encoder_padding_mask, decoder_look_ahead_mask ,decoder_padding_mask
 
-res = generate_padding_mask(tf.constant([[0, 1, 2, 3, 4], [0, 1, 2, 3, 4]]))
-print(res)
+print(generate_look_ahead_mask(3))
