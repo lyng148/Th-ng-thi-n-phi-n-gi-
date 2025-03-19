@@ -35,10 +35,6 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    print('---------------------Welcome to ProtonX Transfomer-------------------')
-    print('Github: bangoc123')
-    print('Email: protonxai@gmail.com')
-    print('---------------------------------------------------------------------')
     print('Training Transfomer model with hyper-params:')
     print('===========================')
     for i, arg in enumerate(vars(args)):

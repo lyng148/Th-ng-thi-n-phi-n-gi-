@@ -16,7 +16,7 @@ def loss_function(real, pred):
         float: Giá trị loss trung bình trên các từ không phải padding
     """
     mask = tf.math.logical_not(real == 0)  # True cho các từ thực, False cho padding
-    loss = loss_object(real, pred)  # Tính cross entropy loss
+    loss = loss_object(real, pred)  # Tính cross entropy loss tu keras.SparseCategoricalCrossentropy
     
     mask = tf.cast(mask, dtype=loss.dtype)  # Chuyển mask sang cùng kiểu dữ liệu với loss
     loss = loss * mask  # Chỉ giữ lại loss của các từ thực

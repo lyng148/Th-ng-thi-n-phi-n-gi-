@@ -3,13 +3,10 @@ __pycache__
 
 
 
-saved_model/
 
-data/train/*.en
-data/train/*.vi
 # ./data/
 
-saved_vocab/
+
 
 checkpoints/
 

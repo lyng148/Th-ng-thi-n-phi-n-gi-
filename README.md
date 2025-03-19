@@ -7,9 +7,7 @@ Bảo pháp "Thông Thiên Phiên Giả" là một đại pháp khí tối thư�
     - Bí mật của **Biến Hóa Ngữ Giới**: [Tại đây](https://drive.google.com/file/d/182rTpgUdTjDgw4LrAM6ah2B_Iw_4rXQW/view?usp=sharing)
     - **Thiên Đạo Phiên Dịch** (Đang cập nhật)
 
-## II. Tác Giả
-- **GitHub**: bangoc123
-- **Linh Truyền**: protonxai@gmail.com
+
 
 Bảo pháp này thuộc về đại môn phái **[Papers-Videos-Code](https://docs.google.com/document/d/1bjmwsYFafizRXlZyJFazd5Jcr3tqpWSiHLvfllWRQBc/edit?usp=sharing)**, nơi tập hợp những kỳ thư thuật pháp của **Trí Tuệ Nhân Tạo**, truyền bá qua kênh **[ProtonX Youtube](https://www.youtube.com/c/ProtonX/videos)**.
 

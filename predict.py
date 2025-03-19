@@ -37,10 +37,6 @@ if __name__ == "__main__":
     parser.add_argument("--eps", default=0.1, type=float)
 
     args = parser.parse_args()
-    print('---------------------Welcome to ProtonX Transformer-------------------')
-    print('Github: bangoc123')
-    print('Email: protonxai@gmail.com')
-    print('---------------------------------------------------------------------')
     print('Predict using Transformer for text path: {}'.format(args.test_path))
     print('===========================')
 
